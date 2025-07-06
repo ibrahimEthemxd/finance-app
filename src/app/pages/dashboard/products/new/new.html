@@ -1,0 +1,13 @@
+<h2>Yeni Ürün Ekle</h2>
+<form [formGroup]="productForm" (ngSubmit)="submit()">
+  <label>Ürün Adı</label>
+  <input formControlName="name" />
+
+  <label>Fiyat</label>
+  <input type="number" formControlName="price" />
+
+  <label>Stok Miktarı</label>
+  <input type="number" formControlName="stock" />
+
+  <button type="submit">Kaydet</button>
+</form>

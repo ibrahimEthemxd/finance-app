@@ -1,0 +1,13 @@
+<h2>Para Transferi</h2>
+<form [formGroup]="transferForm" (ngSubmit)="submit()">
+  <label>Gönderen Hesap</label>
+  <input formControlName="from" />
+
+  <label>Alıcı Hesap</label>
+  <input formControlName="to" />
+
+  <label>Tutar</label>
+  <input type="number" formControlName="amount" />
+
+  <button type="submit">Transfer Et</button>
+</form>

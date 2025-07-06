@@ -1,0 +1,17 @@
+<h2>Fatura Listesi</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Fatura No</th>
+      <th>Müşteri</th>
+      <th>Tutar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let invoice of invoices">
+      <td>{{ invoice.number }}</td>
+      <td>{{ invoice.customer }}</td>
+      <td>{{ invoice.total | currency:'TRY' }}</td>
+    </tr>
+  </tbody>
+</table>

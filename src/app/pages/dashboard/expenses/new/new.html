@@ -1,0 +1,13 @@
+<h2>Yeni Gider Ekle</h2>
+<form [formGroup]="expenseForm" (ngSubmit)="submit()">
+  <label>Gider Başlığı</label>
+  <input formControlName="title" />
+
+  <label>Tutar</label>
+  <input type="number" formControlName="amount" />
+
+  <label>Tarih</label>
+  <input type="date" formControlName="date" />
+
+  <button type="submit">Ekle</button>
+</form>

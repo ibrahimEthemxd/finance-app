@@ -1,0 +1,27 @@
+<div class="auth-container">
+  <h2>Kayıt Ol</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label>
+      E-Posta:
+      <input formControlName="email" type="email" />
+    </label>
+    <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      Geçerli bir e-posta girin
+    </div>
+
+    <label>
+      Şifre:
+      <input formControlName="password" type="password" />
+    </label>
+    <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+      Şifre zorunludur
+    </div>
+
+    <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Kayıt Ol</button>
+  </form>
+
+  <p class="switch-link">Zaten hesabın var mı? <a routerLink="/auth/login">Giriş yap</a></p>
+</div>

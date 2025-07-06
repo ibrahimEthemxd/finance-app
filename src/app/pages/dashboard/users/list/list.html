@@ -1,0 +1,15 @@
+<h2>Kullanıcılar</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Kullanıcı Adı</th>
+      <th>Rol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.name }}</td>
+      <td>{{ u.role }}</td>
+    </tr>
+  </tbody>
+</table>

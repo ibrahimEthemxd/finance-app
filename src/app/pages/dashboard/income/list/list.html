@@ -1,0 +1,17 @@
+<h2>Tahsilatlar</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Müşteri</th>
+      <th>Tutar</th>
+      <th>Tarih</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of payments">
+      <td>{{ payment.from }}</td>
+      <td>{{ payment.amount | currency:'TRY' }}</td>
+      <td>{{ payment.date }}</td>
+    </tr>
+  </tbody>
+</table>

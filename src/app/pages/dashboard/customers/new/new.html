@@ -1,0 +1,13 @@
+<h2>Yeni Müşteri Ekle</h2>
+<form [formGroup]="customerForm" (ngSubmit)="submit()">
+  <label>Ad Soyad</label>
+  <input formControlName="name" />
+
+  <label>Email</label>
+  <input formControlName="email" />
+
+  <label>Telefon</label>
+  <input formControlName="phone" />
+
+  <button type="submit">Kaydet</button>
+</form>

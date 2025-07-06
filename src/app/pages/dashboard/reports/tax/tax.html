@@ -1,0 +1,6 @@
+<h2>Vergi Beyannamesi</h2>
+<ul>
+  <li *ngFor="let tax of taxReports">
+    {{ tax.type }}: {{ tax.amount | currency:'TRY' }}
+  </li>
+</ul>

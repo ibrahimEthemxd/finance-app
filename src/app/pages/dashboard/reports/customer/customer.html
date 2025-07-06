@@ -1,0 +1,15 @@
+<h2>Müşteri Bazlı Rapor</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Müşteri</th>
+      <th>Toplam Satış</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of customerReports">
+      <td>{{ c.name }}</td>
+      <td>{{ c.totalSales | currency:'TRY' }}</td>
+    </tr>
+  </tbody>
+</table>

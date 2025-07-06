@@ -1,0 +1,13 @@
+<h2>Yeni Gelir Ekle</h2>
+<form [formGroup]="incomeForm" (ngSubmit)="submit()">
+  <label>Kaynak</label>
+  <input formControlName="source" />
+
+  <label>Tutar</label>
+  <input type="number" formControlName="amount" />
+
+  <label>Tarih</label>
+  <input type="date" formControlName="date" />
+
+  <button type="submit">Ekle</button>
+</form>

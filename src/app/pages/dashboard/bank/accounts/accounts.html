@@ -1,0 +1,8 @@
+<h2>Banka Hesapları</h2>
+<ul>
+  <li *ngFor="let acc of accounts">
+    <strong>{{ acc.bank }}</strong><br />
+    IBAN: {{ acc.iban }}<br />
+    Bakiye: {{ acc.balance | currency:'TRY' }}
+  </li>
+</ul>

@@ -1,0 +1,6 @@
+<h2>Rol ve Yetki Ayarları</h2>
+<ul>
+  <li *ngFor="let r of roles">
+    <strong>{{ r.name }}</strong> – {{ r.permissions.join(', ') }}
+  </li>
+</ul>

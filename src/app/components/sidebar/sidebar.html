@@ -1,0 +1,161 @@
+<div class="sidebar">
+  <!-- Dashboard -->
+  <div
+    class="menu-title"
+    [class.active]="activeMenu === 'dashboard'"
+    (click)="toggleMenu('dashboard')"
+    routerLink="/dashboard/home"
+  >
+    📊 Ana Sayfa
+  </div>
+
+  <!-- Müşteri -->
+  <div class="menu-group">
+    <div
+      class="menu-title"
+      [class.active]="activeMenu === 'customer'"
+      (click)="toggleMenu('customer')"
+    >
+      💼 Cari Yönetimi
+    </div>
+    <div class="submenu" *ngIf="activeMenu === 'customer'">
+      <a routerLink="/dashboard/customers/list" routerLinkActive="active"
+        >Müşteri Listesi</a
+      >
+      <a routerLink="/dashboard/customers/new" routerLinkActive="active"
+        >Yeni Müşteri Ekle</a
+      >
+      <a routerLink="/dashboard/customers/debt" routerLinkActive="active"
+        >Borç / Alacak Durumu</a
+      >
+    </div>
+  </div>
+
+  <!-- Ürün -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('product')">
+      📦 Ürün Yönetimi
+    </div>
+    <div class="submenu" *ngIf="activeMenu === 'product'">
+      <a routerLink="/dashboard/products/list" routerLinkActive="active"
+        >Ürün Listesi</a
+      >
+      <a routerLink="/dashboard/products/new" routerLinkActive="active"
+        >Yeni Ürün Ekle</a
+      >
+      <a routerLink="/dashboard/products/stock" routerLinkActive="active"
+        >Stok Takibi</a
+      >
+    </div>
+  </div>
+
+  <!-- Faturalar -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('invoice')">📄 Faturalar</div>
+    <div class="submenu" *ngIf="activeMenu === 'invoice'">
+      <a routerLink="/dashboard/invoices/new" routerLinkActive="active"
+        >Fatura Oluştur</a
+      >
+      <a routerLink="/dashboard/invoices/list" routerLinkActive="active"
+        >Fatura Listesi</a
+      >
+      <a routerLink="/dashboard/invoices/earchive" routerLinkActive="active"
+        >E-Arşiv / E-Fatura</a
+      >
+    </div>
+  </div>
+
+  <!-- Giderler -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('expense')">🧾 Giderler</div>
+    <div class="submenu" *ngIf="activeMenu === 'expense'">
+      <a routerLink="/dashboard/expenses/list" routerLinkActive="active"
+        >Gider Kalemleri</a
+      >
+      <a routerLink="/dashboard/expenses/new" routerLinkActive="active"
+        >Yeni Gider Ekle</a
+      >
+    </div>
+  </div>
+
+  <!-- Gelirler -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('income')">💳 Gelirler</div>
+    <div class="submenu" *ngIf="activeMenu === 'income'">
+      <a routerLink="/dashboard/income/list" routerLinkActive="active"
+        >Tahsilatlar</a
+      >
+      <a routerLink="/dashboard/income/categories" routerLinkActive="active"
+        >Gelir Kalemleri</a
+      >
+      <a routerLink="/dashboard/income/new" routerLinkActive="active"
+        >Yeni Gelir Ekle</a
+      >
+    </div>
+  </div>
+
+  <!-- Banka / Kasa -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('bank')">
+      🧮 Banka İşlemleri
+    </div>
+    <div class="submenu" *ngIf="activeMenu === 'bank'">
+      <a routerLink="/dashboard/bank/cash" routerLinkActive="active"
+        >Kasa Takibi</a
+      >
+      <a routerLink="/dashboard/bank/accounts" routerLinkActive="active"
+        >Banka Hesapları</a
+      >
+      <a routerLink="/dashboard/bank/transfer" routerLinkActive="active"
+        >Para Transferi</a
+      >
+    </div>
+  </div>
+
+  <!-- Raporlar -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('reports')">📝 Raporlar</div>
+    <div class="submenu" *ngIf="activeMenu === 'reports'">
+      <a routerLink="/dashboard/reports/daily" routerLinkActive="active"
+        >Günlük / Aylık Rapor</a
+      >
+      <a routerLink="/dashboard/reports/customer" routerLinkActive="active"
+        >Müşteri Bazlı Rapor</a
+      >
+      <a routerLink="/dashboard/reports/tax" routerLinkActive="active"
+        >Vergi Beyannamesi</a
+      >
+    </div>
+  </div>
+
+  <!-- Kullanıcı -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('users')">
+      👤 Kullanıcı Yönetimi
+    </div>
+    <div class="submenu" *ngIf="activeMenu === 'users'">
+      <a routerLink="/dashboard/users/list" routerLinkActive="active"
+        >Yetkili Kullanıcılar</a
+      >
+      <a routerLink="/dashboard/users/roles" routerLinkActive="active"
+        >Rol / Yetki Ayarları</a
+      >
+    </div>
+  </div>
+
+  <!-- Ayarlar -->
+  <div class="menu-group">
+    <div class="menu-title" (click)="toggleMenu('settings')">⚙️ Ayarlar</div>
+    <div class="submenu" *ngIf="activeMenu === 'settings'">
+      <a routerLink="/dashboard/settings/company" routerLinkActive="active"
+        >Firma Bilgileri</a
+      >
+      <a routerLink="/dashboard/settings/tax" routerLinkActive="active"
+        >Vergi Oranları</a
+      >
+      <a routerLink="/dashboard/settings/templates" routerLinkActive="active"
+        >Şablon Ayarları</a
+      >
+    </div>
+  </div>
+</div>

@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== CSS Reset (Modern Normalize) ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== HTML ve Body Temeli ===== */
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #2c3e50;
+}
+
+/* Linkler */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bdc3c7;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Başlık ve yazılar */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}

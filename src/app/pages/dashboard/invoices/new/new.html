@@ -1,0 +1,13 @@
+<h2>Yeni Fatura Oluştur</h2>
+<form [formGroup]="invoiceForm" (ngSubmit)="submit()">
+  <label>Müşteri</label>
+  <input formControlName="customer" />
+
+  <label>Tutar</label>
+  <input type="number" formControlName="amount" />
+
+  <label>Tarih</label>
+  <input type="date" formControlName="date" />
+
+  <button type="submit">Oluştur</button>
+</form>
