@@ -19,6 +19,7 @@ export class RegisterComponent {
     private router: Router
   ) {
     this.registerForm = this.fb.group({
+      username: ['', Validators.required], // Yeni alan eklendi
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -26,9 +27,10 @@ export class RegisterComponent {
 
   async onSubmit() {
     this.errorMsg = '';
-    const { email, password } = this.registerForm.value;
+    const { username, email, password } = this.registerForm.value;
 
-    if (email && password) {
+    if (username && email && password) {
+      localStorage.setItem('username', username); // Kullanıcı adı kaydediliyor
       this.router.navigate(['/dashboard']);
     } else {
       this.errorMsg = 'Kayıt başarısız';

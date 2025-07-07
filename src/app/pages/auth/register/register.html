@@ -3,6 +3,14 @@
 
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <label>
+      Kullanıcı Adı:
+      <input formControlName="username" type="text" />
+    </label>
+    <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+      Kullanıcı adı zorunludur
+    </div>
+
+    <label>
       E-Posta:
       <input formControlName="email" type="email" />
     </label>
@@ -23,5 +31,8 @@
     <button type="submit" [disabled]="registerForm.invalid">Kayıt Ol</button>
   </form>
 
-  <p class="switch-link">Zaten hesabın var mı? <a routerLink="/auth/login">Giriş yap</a></p>
+  <p class="switch-link">
+    Zaten hesabın var mı?
+    <a routerLink="/auth/login">Giriş yap</a>
+  </p>
 </div>

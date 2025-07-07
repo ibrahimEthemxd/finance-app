@@ -1,12 +1,13 @@
 <div class="container">
+  <!-- <button type="submit" class="submit-btn" [disabled]="loading">
+    {{ loading ? "Yükleniyor..." : mode === "login" ? "Login" : "Signup" }}
+  </button> -->
+
   <div class="form-box">
-    <h2>{{ mode === 'login' ? 'Login Form' : 'Register Form' }}</h2>
+    <h2>{{ mode === "login" ? "Login Form" : "Register Form" }}</h2>
 
     <div class="tab-buttons">
-      <button
-        [class.active]="mode === 'login'"
-        (click)="switchMode('login')"
-      >
+      <button [class.active]="mode === 'login'" (click)="switchMode('login')">
         Login
       </button>
       <button
@@ -19,21 +20,25 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <input type="email" formControlName="email" placeholder="Email Address" />
-      <input type="password" formControlName="password" placeholder="Password" />
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
 
       <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
 
       <a href="#" class="forgot" *ngIf="mode === 'login'">Forgot password?</a>
 
       <button type="submit" class="submit-btn">
-        {{ mode === 'login' ? 'Login' : 'Signup' }}
+        {{ mode === "login" ? "Login" : "Signup" }}
       </button>
     </form>
 
     <p class="toggle-text">
-      {{ mode === 'login' ? 'Not a member?' : 'Already have an account?' }}
+      {{ mode === "login" ? "Not a member?" : "Already have an account?" }}
       <a (click)="switchMode(mode === 'login' ? 'register' : 'login')">
-        {{ mode === 'login' ? 'Signup now' : 'Login' }}
+        {{ mode === "login" ? "Signup now" : "Login" }}
       </a>
     </p>
   </div>

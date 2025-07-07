@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth'; // ✅ Import et
 
 @Component({
   standalone: true,
@@ -15,8 +16,13 @@ export class LoginComponent {
 
   form: any;
   errorMsg = '';
+  loading = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService // ✅ Inject et
+  ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -37,14 +43,20 @@ export class LoginComponent {
       return;
     }
 
-    if (this.mode === 'login') {
-      if (email === 'test@test.com' && password === '123456') {
-        this.router.navigate(['/dashboard']);
+    this.loading = true;
+    this.errorMsg = '';
+
+    try {
+      if (this.mode === 'login') {
+        await this.authService.signIn(email, password);
       } else {
-        this.errorMsg = 'Geçersiz giriş bilgileri.';
+        await this.authService.signUp(email, password);
       }
-    } else {
       this.router.navigate(['/dashboard']);
+    } catch (error: any) {
+      this.errorMsg = error.message || 'Bir hata oluştu.';
+    } finally {
+      this.loading = false;
     }
   }
 }
