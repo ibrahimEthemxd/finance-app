@@ -4,6 +4,16 @@
   </div>
   <div class="navbar-right">
     <span class="user">Merhaba, {{ username }}</span>
-    <a routerLink="/auth/login" class="logout">Çıkış</a>
+    <a (click)="openLogoutModal()" class="logout">Çıkış</a>
   </div>
 </nav>
+
+<div class="modal-backdrop" *ngIf="showLogoutModal">
+  <div class="modal">
+    <h3>Çıkış yapmak istiyor musunuz?</h3>
+    <div class="modal-buttons">
+      <button class="cancel" (click)="cancelLogout()">Vazgeç</button>
+      <button class="confirm" (click)="confirmLogout()">Çıkış Yap</button>
+    </div>
+  </div>
+</div>

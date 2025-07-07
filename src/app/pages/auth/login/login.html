@@ -1,44 +1,39 @@
 <div class="container">
-  <!-- <button type="submit" class="submit-btn" [disabled]="loading">
-    {{ loading ? "Yükleniyor..." : mode === "login" ? "Login" : "Signup" }}
-  </button> -->
-
   <div class="form-box">
-    <h2>{{ mode === "login" ? "Login Form" : "Register Form" }}</h2>
+    <h2>Merhaba,</h2>
+    <p>FinansApp’e giriş yap veya hesap oluştur, verilerini yönetmeye başla!</p>
 
     <div class="tab-buttons">
       <button [class.active]="mode === 'login'" (click)="switchMode('login')">
-        Login
+        Giriş Yap
       </button>
-      <button
-        [class.active]="mode === 'register'"
-        (click)="switchMode('register')"
-      >
-        Signup
+      <button [class.active]="mode === 'register'" (click)="switchMode('register')">
+        Üye Ol
       </button>
     </div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <input type="email" formControlName="email" placeholder="Email Address" />
-      <input
-        type="password"
-        formControlName="password"
-        placeholder="Password"
-      />
+      <input type="email" formControlName="email" placeholder="E-Posta" />
+      <input type="password" formControlName="password" placeholder="Şifre" />
 
       <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
 
-      <a href="#" class="forgot" *ngIf="mode === 'login'">Forgot password?</a>
+      <a href="#" class="forgot" *ngIf="mode === 'login'">Şifremi Unuttum</a>
 
-      <button type="submit" class="submit-btn">
-        {{ mode === "login" ? "Login" : "Signup" }}
+      <button type="submit" class="submit-btn" [disabled]="loading">
+        {{ loading ? "Yükleniyor..." : mode === "login" ? "Giriş Yap" : "Kayıt Ol" }}
       </button>
     </form>
 
+    <div class="social-login" *ngIf="mode === 'login'">
+      <button class="facebook">Facebook ile giriş yap</button>
+      <button class="google">Google ile giriş yap</button>
+    </div>
+
     <p class="toggle-text">
-      {{ mode === "login" ? "Not a member?" : "Already have an account?" }}
+      {{ mode === 'login' ? 'Hesabın yok mu?' : 'Zaten hesabın var mı?' }}
       <a (click)="switchMode(mode === 'login' ? 'register' : 'login')">
-        {{ mode === "login" ? "Signup now" : "Login" }}
+        {{ mode === 'login' ? 'Hemen kayıt ol' : 'Giriş yap' }}
       </a>
     </p>
   </div>

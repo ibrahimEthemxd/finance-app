@@ -12,11 +12,27 @@ export class AuthService {
     return data;
   }
 
-  async signUp(email: string, password: string) {
-    const { data, error } = await supabase.auth.signUp({ email, password });
-    if (error) throw error;
-    return data;
+ async signUp(email: string, password: string, username: string) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) throw error;
+
+  const userId = data.user?.id;
+
+  if (userId) {
+    const { error: profileError } = await supabase
+      .from('profiles')
+      .insert({ id: userId, username });
+
+    if (profileError) throw profileError;
   }
+
+  return data;
+}
+
 
   async getUser() {
     const {

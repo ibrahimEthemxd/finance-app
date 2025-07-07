@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth'; // ✅ Import et
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../services/auth';
 
 @Component({
   standalone: true,
   selector: 'app-login',
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   mode: 'login' | 'register' = 'login';
-
   form: any;
   errorMsg = '';
   loading = false;
@@ -21,25 +20,33 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService // ✅ Inject et
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
+  ngOnInit(): void {
+    const currentPath = this.route.snapshot.routeConfig?.path;
+    if (currentPath === 'register') {
+      this.mode = 'register';
+    } else {
+      this.mode = 'login';
+    }
+  }
+
   switchMode(mode: 'login' | 'register') {
-    this.mode = mode;
-    this.form.reset();
-    this.errorMsg = '';
+    this.router.navigate(['/auth', mode]);
   }
 
   async onSubmit() {
     const { email, password } = this.form.value;
 
     if (!email || !password) {
-      this.errorMsg = 'Tüm alanları doldurun.';
+      this.errorMsg = 'Lütfen tüm alanları doldurun.';
       return;
     }
 
@@ -50,9 +57,9 @@ export class LoginComponent {
       if (this.mode === 'login') {
         await this.authService.signIn(email, password);
       } else {
-        await this.authService.signUp(email, password);
+        await this.authService.signUp(email, password, 'Anonim'); 
       }
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/home']);
     } catch (error: any) {
       this.errorMsg = error.message || 'Bir hata oluştu.';
     } finally {

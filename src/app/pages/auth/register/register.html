@@ -1,38 +1,41 @@
-<div class="auth-container">
-  <h2>Kayıt Ol</h2>
+<div class="container">
+  <div class="form-box">
+    <h2>Merhaba,</h2>
+    <p>Hemen üye ol, FinansApp'i kullanmaya başla!</p>
 
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <label>
-      Kullanıcı Adı:
-      <input formControlName="username" type="text" />
-    </label>
-    <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
-      Kullanıcı adı zorunludur
+    <div class="tab-buttons">
+      <button [class.active]="false" (click)="goToLogin()">
+        Giriş Yap
+      </button>
+      <button class="active">
+        Üye Ol
+      </button>
     </div>
 
-    <label>
-      E-Posta:
-      <input formControlName="email" type="email" />
-    </label>
-    <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-      Geçerli bir e-posta girin
-    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <input formControlName="username" type="text" placeholder="Kullanıcı Adı" />
+      <div class="error" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+        Kullanıcı adı zorunludur
+      </div>
 
-    <label>
-      Şifre:
-      <input formControlName="password" type="password" />
-    </label>
-    <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-      Şifre zorunludur
-    </div>
+      <input formControlName="email" type="email" placeholder="E-Posta Adresi" />
+      <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        Geçerli bir e-posta girin
+      </div>
 
-    <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
+      <input formControlName="password" type="password" placeholder="Şifre" />
+      <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        Şifre zorunludur
+      </div>
 
-    <button type="submit" [disabled]="registerForm.invalid">Kayıt Ol</button>
-  </form>
+      <div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
 
-  <p class="switch-link">
-    Zaten hesabın var mı?
-    <a routerLink="/auth/login">Giriş yap</a>
-  </p>
+      <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">Kayıt Ol</button>
+    </form>
+
+    <p class="toggle-text">
+      Zaten hesabın var mı?
+      <a (click)="goToLogin()">Giriş yap</a>
+    </p>
+  </div>
 </div>
